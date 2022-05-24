@@ -1,7 +1,6 @@
 package com.residencia.academia.controller;
 
 import com.residencia.academia.entity.Atividade;
-import com.residencia.academia.entity.Turma;
 import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.AtividadeService;
 import org.springframework.beans.factory.annotation.Autowired;
