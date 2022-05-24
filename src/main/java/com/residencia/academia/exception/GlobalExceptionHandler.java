@@ -1,5 +1,6 @@
 package com.residencia.academia.exception;
 
+import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Object> handleNoSuchElementFoundException(NoSuchElementFoundException itemNotFoundException, WebRequest request) {
         return buildErrorResponse(itemNotFoundException, HttpStatus.NOT_FOUND, request);
+    }
+
+    @ExceptionHandler(InvalidDataAccessResourceUsageException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<Object> handleInvalidDataAccessResourceUsageException(InvalidDataAccessResourceUsageException invalidDataAccessResourceUsageException, WebRequest request) {
+        return buildErrorResponse(invalidDataAccessResourceUsageException, "Não foi possivel encontrar a tabela desejada", HttpStatus.NOT_FOUND, request);
     }
 
     @ExceptionHandler(Exception.class)
