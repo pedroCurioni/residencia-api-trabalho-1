@@ -35,6 +35,10 @@ public class Turma {
     @JoinColumn(name = "id_instrutor", referencedColumnName = "id_instrutor")
     private Instrutor instrutor;
 
+    @ManyToOne
+    @JoinColumn(name = "id_atividade", referencedColumnName = "id_atividade")
+    private Atividade atividade;
+
     public Integer getIdTurma() {
         return idTurma;
     }
@@ -81,5 +85,13 @@ public class Turma {
 
     public void setInstrutor(Instrutor instrutor) {
         this.instrutor = instrutor;
+    }
+
+    public Atividade getAtividade() {
+        return atividade;
+    }
+
+    public void setAtividade(Atividade atividade) {
+        this.atividade = atividade;
     }
 }

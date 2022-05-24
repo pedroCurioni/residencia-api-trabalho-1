@@ -1,6 +1,7 @@
 package com.residencia.academia.controller;
 
 import com.residencia.academia.entity.Instrutor;
+import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.InstrutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ public class InstrutorController {
     public ResponseEntity<Instrutor> findById(@PathVariable Integer id) {
         Instrutor instrutor = instrutorService.findById(id);
         if (null == instrutor) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            throw  new NoSuchElementFoundException("Não foi encontrado o Instrutor com o id " + id);
         } else {
             return new ResponseEntity<>(instrutor, HttpStatus.OK);
         }
@@ -43,7 +44,11 @@ public class InstrutorController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable Integer id) {
-        instrutorService.delete(id);
-        return new ResponseEntity<>("", HttpStatus.OK);
+        if (null == instrutorService.findById(id)) {
+            throw new NoSuchElementFoundException("Não foi encontrado o Instrutor com o id " + id);
+        } else {
+            instrutorService.delete(id);
+            return new ResponseEntity<>("Instrutor " + id + " deletado com exito", HttpStatus.OK);
+        }
     }
 }
