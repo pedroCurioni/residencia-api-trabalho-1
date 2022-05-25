@@ -1,16 +1,11 @@
 package com.residencia.academia.service;
 
 import com.residencia.academia.dto.AtividadeDTO;
-import com.residencia.academia.dto.InstrutorDTO;
-import com.residencia.academia.dto.TurmaDTO;
 import com.residencia.academia.entity.Atividade;
-import com.residencia.academia.entity.Instrutor;
-import com.residencia.academia.entity.Turma;
 import com.residencia.academia.repositorio.AtividadeRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -69,6 +64,7 @@ public class AtividadeService {
         Atividade atividade = new Atividade();
         atividade.setIdAtividade(atividadeDTO.getIdAtividade());
         atividade.setNome(atividadeDTO.getNome());
+
 
         return atividade;
     }

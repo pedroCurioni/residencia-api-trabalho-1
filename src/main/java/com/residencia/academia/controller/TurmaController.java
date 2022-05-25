@@ -1,9 +1,7 @@
 package com.residencia.academia.controller;
 
 
-import com.residencia.academia.dto.InstrutorDTO;
 import com.residencia.academia.dto.TurmaDTO;
-import com.residencia.academia.entity.Instrutor;
 import com.residencia.academia.entity.Turma;
 import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.TurmaService;
@@ -34,7 +32,6 @@ public class TurmaController {
             return new ResponseEntity<>(turmaDTO, HttpStatus.OK);
         }
     }
-
 
 
     @GetMapping("/{id}")

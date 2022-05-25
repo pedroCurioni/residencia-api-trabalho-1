@@ -10,14 +10,16 @@ import com.residencia.academia.repositorio.TurmaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.cert.TrustAnchor;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class TurmaService {
     @Autowired
     TurmaRepositorio turmaRepositorio;
+    @Autowired
+    InstrutorService instrutorService;
+    @Autowired
+    AtividadeService atividadeService;
 
     public List<Turma> findAll() {
         return turmaRepositorio.findAll();
@@ -38,10 +40,10 @@ public class TurmaService {
         return turmaRepositorio.findById(id).isPresent() ? turmaRepositorio.findById(id).get() : null;
     }
 
-    public TurmaDTO saveDTO(TurmaDTO instrutorDTO) {
+    public TurmaDTO saveDTO(TurmaDTO turmaDTO) {
         Turma novaTurma = new Turma();
-        if (null != instrutorDTO) {
-            novaTurma = DTOToEntity(instrutorDTO);
+        if (null != turmaDTO) {
+            novaTurma = DTOToEntity(turmaDTO);
             turmaRepositorio.save(novaTurma);
         }
         return EntityToTDO(novaTurma);
@@ -89,6 +91,7 @@ public class TurmaService {
 
             turmaDTO.setAtividadeDTO(atividadeDTO);
         }
+
         return turmaDTO;
     }
 
@@ -99,6 +102,11 @@ public class TurmaService {
         turma.setHorarioTurma(turmaDTO.getHorarioTurma());
         turma.setDataFim(turmaDTO.getDataInicio());
         turma.setDataInicio(turmaDTO.getDataFim());
+
+        Instrutor instrutor = instrutorService.findById(turmaDTO.getInstrutorDTO().getIdInstrutor());
+        turma.setInstrutor(instrutor);
+        Atividade atividade = atividadeService.findById(turmaDTO.getAtividadeDTO().getIdAtividade());
+        turma.setAtividade(atividade);
 
         return turma;
     }

@@ -1,15 +1,8 @@
 package com.residencia.academia.dto;
 
-import com.residencia.academia.entity.Turma;
-
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
-import java.util.List;
-
 public class AtividadeDTO {
     private Integer idAtividade;
     private String nome;
-//    private List<Turma> turmas;
 
     public Integer getIdAtividade() {
         return idAtividade;
