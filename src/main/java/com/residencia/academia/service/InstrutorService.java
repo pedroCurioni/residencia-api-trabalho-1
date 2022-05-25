@@ -39,6 +39,7 @@ public class InstrutorService {
         Instrutor novoInstrutor = new Instrutor();
         if (null != instrutorDTO) {
             novoInstrutor = DTOToEntity(instrutorDTO);
+            instrutorRepositorio.save(novoInstrutor);
         }
         return EntityToTDO(novoInstrutor);
     }
@@ -88,6 +89,6 @@ public class InstrutorService {
         instrutor.setDataNascimento(instrutorDTO.getDataNascimento());
         instrutor.setTitulacaoInstrutor(instrutorDTO.getTitulacaoInstrutor());
 
-        return instrutorRepositorio.save(instrutor);
+        return instrutor;
     }
 }
