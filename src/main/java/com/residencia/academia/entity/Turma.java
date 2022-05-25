@@ -10,9 +10,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "turma")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idTurma")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idTurma")
 public class Turma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

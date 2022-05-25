@@ -17,15 +17,14 @@ public class AtividadeService {
     }
 
     public Atividade findById(Integer id) {
-        return atividadeRepositorio.findById(id).isPresent()?
-                atividadeRepositorio.findById(id).get():null;
+        return atividadeRepositorio.findById(id).isPresent() ? atividadeRepositorio.findById(id).get() : null;
     }
 
-    public Atividade save (Atividade atividade) {
+    public Atividade save(Atividade atividade) {
         return atividadeRepositorio.save(atividade);
     }
 
-    public Atividade update (Atividade atividade) {
+    public Atividade update(Atividade atividade) {
         return atividadeRepositorio.save(atividade);
     }
 

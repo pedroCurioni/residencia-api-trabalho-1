@@ -25,7 +25,7 @@ public class AtividadeController {
     public ResponseEntity<Atividade> findById(@PathVariable Integer id) {
         Atividade atividade = atividadeService.findById(id);
         if (null == atividade) {
-            throw  new NoSuchElementFoundException("Não foi encontrada a Atividade com o id " + id);
+            throw new NoSuchElementFoundException("Não foi encontrada a Atividade com o id " + id);
         } else {
             return new ResponseEntity<>(atividade, HttpStatus.OK);
         }

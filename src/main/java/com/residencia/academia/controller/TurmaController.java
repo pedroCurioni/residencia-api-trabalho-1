@@ -27,7 +27,7 @@ public class TurmaController {
     public ResponseEntity<Turma> findById(@PathVariable Integer id) {
         Turma turma = turmaService.findById(id);
         if (null == turma) {
-            throw  new NoSuchElementFoundException("Não foi encontrada a Turma com o id " + id);
+            throw new NoSuchElementFoundException("Não foi encontrada a Turma com o id " + id);
         } else {
             return new ResponseEntity<>(turma, HttpStatus.OK);
         }

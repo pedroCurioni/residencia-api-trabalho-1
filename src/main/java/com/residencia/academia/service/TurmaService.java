@@ -17,8 +17,7 @@ public class TurmaService {
     }
 
     public Turma findById(Integer id) {
-        return turmaRepositorio.findById(id).isPresent()?
-                turmaRepositorio.findById(id).get():null;
+        return turmaRepositorio.findById(id).isPresent() ? turmaRepositorio.findById(id).get() : null;
     }
 
     public Turma save(Turma turma) {
