@@ -1,7 +1,9 @@
 package com.residencia.academia.service;
 
+import com.residencia.academia.dto.AtividadeDTO;
 import com.residencia.academia.dto.InstrutorDTO;
 import com.residencia.academia.dto.TurmaDTO;
+import com.residencia.academia.entity.Atividade;
 import com.residencia.academia.entity.Instrutor;
 import com.residencia.academia.entity.Turma;
 import com.residencia.academia.repositorio.TurmaRepositorio;
@@ -65,6 +67,24 @@ public class TurmaService {
         turmaDTO.setDataFim(turma.getDataInicio());
         turmaDTO.setDataInicio(turma.getDataFim());
 
+        if (turma.getInstrutor() != null) {
+            Instrutor instrutor = turma.getInstrutor();
+            InstrutorDTO instrutorDTO = new InstrutorDTO();
+
+            instrutorDTO.setIdInstrutor(instrutor.getIdInstrutor());
+            instrutorDTO.setRg(instrutor.getRg());
+            instrutorDTO.setNomeInstrutor(instrutor.getNomeInstrutor());
+            instrutorDTO.setDataNascimento(instrutor.getDataNascimento());
+            instrutorDTO.setTitulacaoInstrutor(instrutor.getTitulacaoInstrutor());
+        }
+
+        if (turma.getAtividade() != null) {
+            Atividade atividade = turma.getAtividade();
+            AtividadeDTO atividadeDTO = new AtividadeDTO();
+
+            atividadeDTO.setIdAtividade(atividade.getIdAtividade());
+            atividadeDTO.setNome(atividade.getNome());
+        }
         return turmaDTO;
     }
 
