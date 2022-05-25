@@ -27,7 +27,7 @@ public class Atividade {
     }
 
     public void setIdAtividade(Integer idAtividade) {
-        this.idAtividade = idAtividade;
+        this.idAtividade = this.idAtividade;
     }
 
     public String getNome() {

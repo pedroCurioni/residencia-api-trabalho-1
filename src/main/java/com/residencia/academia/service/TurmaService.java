@@ -28,6 +28,7 @@ public class TurmaService {
         if (null != turma) {
             turmaDTO = EntityToTDO(turma);
         }
+
         return turmaDTO;
     }
 

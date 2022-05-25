@@ -10,6 +10,8 @@ public class TurmaDTO {
     private Date dataInicio;
     private Date dataFim;
 
+    private AtividadeDTO atividadeDTO;
+
     public Integer getIdTurma() {
         return idTurma;
     }
@@ -48,5 +50,13 @@ public class TurmaDTO {
 
     public void setDataFim(Date dataFim) {
         this.dataFim = dataFim;
+    }
+
+    public AtividadeDTO getAtividadeDTO() {
+        return atividadeDTO;
+    }
+
+    public void setAtividadeDTO(AtividadeDTO atividadeDTO) {
+        this.atividadeDTO = atividadeDTO;
     }
 }
