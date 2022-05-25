@@ -1,11 +1,6 @@
 package com.residencia.academia.dto;
 
-import com.residencia.academia.entity.Atividade;
-import com.residencia.academia.entity.Instrutor;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.util.Date;
 
 public class TurmaDTO {
@@ -14,10 +9,6 @@ public class TurmaDTO {
     private Integer duracaoTurma;
     private Date dataInicio;
     private Date dataFim;
-
-//    private Instrutor instrutor;
-//    private Atividade atividade;
-
 
     public Integer getIdTurma() {
         return idTurma;

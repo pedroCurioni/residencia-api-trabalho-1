@@ -1,8 +1,5 @@
 package com.residencia.academia.dto;
 
-import com.residencia.academia.entity.Turma;
-
-
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +9,12 @@ public class InstrutorDTO {
     private String nomeInstrutor;
     private Date dataNascimento;
     private Integer titulacaoInstrutor;
-//    private List<Turma> turmas;
+    private List<TurmaDTO> turmaDTOList;
+
+    @Override
+    public String toString() {
+        return "InstrutorDTO{" + "idInstrutor=" + idInstrutor + ", rg=" + rg + ", nomeInstrutor='" + nomeInstrutor + '\'' + ", dataNascimento=" + dataNascimento + ", titulacaoInstrutor=" + titulacaoInstrutor + ", turmaDTOList=" + turmaDTOList + '}';
+    }
 
     public Integer getIdInstrutor() {
         return idInstrutor;
@@ -52,5 +54,13 @@ public class InstrutorDTO {
 
     public void setTitulacaoInstrutor(Integer titulacaoInstrutor) {
         this.titulacaoInstrutor = titulacaoInstrutor;
+    }
+
+    public List<TurmaDTO> getTurmaDTOList() {
+        return turmaDTOList;
+    }
+
+    public void setTurmaDTOList(List<TurmaDTO> turmaDTOList) {
+        this.turmaDTOList = turmaDTOList;
     }
 }

@@ -1,5 +1,6 @@
 package com.residencia.academia.controller;
 
+import com.residencia.academia.dto.InstrutorDTO;
 import com.residencia.academia.entity.Instrutor;
 import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.InstrutorService;
@@ -22,6 +23,16 @@ public class InstrutorController {
         return new ResponseEntity<>(instrutorList, HttpStatus.OK);
     }
 
+    @GetMapping("/dto/{id}")
+    public ResponseEntity<InstrutorDTO> findDTOById(@PathVariable Integer id) {
+        InstrutorDTO instrutorDTO = instrutorService.findDTOById(id);
+        if (null == instrutorDTO) {
+            throw  new NoSuchElementFoundException("Não foi encontrado o Instrutor com o id " + id);
+        } else {
+            return new ResponseEntity<>(instrutorDTO, HttpStatus.OK);
+        }
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Instrutor> findById(@PathVariable Integer id) {
         Instrutor instrutor = instrutorService.findById(id);
@@ -32,6 +43,10 @@ public class InstrutorController {
         }
     }
 
+    @PostMapping("/dto")
+    public ResponseEntity<InstrutorDTO> saveDTO(@RequestBody InstrutorDTO instrutorDTO) {
+        return new ResponseEntity<>(instrutorService.saveDTO(instrutorDTO), HttpStatus.CREATED);
+    }
     @PostMapping
     public ResponseEntity<Instrutor> save(@RequestBody Instrutor instrutor) {
         return new ResponseEntity<>(instrutorService.save(instrutor), HttpStatus.CREATED);
