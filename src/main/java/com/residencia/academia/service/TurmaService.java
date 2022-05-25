@@ -65,20 +65,6 @@ public class TurmaService {
         turmaDTO.setDataFim(turma.getDataInicio());
         turmaDTO.setDataInicio(turma.getDataFim());
 
-//        if (instrutor.getTurmas() != null) {
-//            List<TurmaDTO> listTurmaDTO = new ArrayList<>();
-//            for (Turma turma : instrutor.getTurmas()) {
-//                TurmaDTO turmaDTO = new TurmaDTO();
-//                turmaDTO.setIdTurma(turma.getIdTurma());
-//                turmaDTO.setHorarioTurma(turma.getHorarioTurma());
-//                turmaDTO.setDuracaoTurma(turma.getDuracaoTurma());
-//                turmaDTO.setDataInicio(turma.getDataInicio());
-//                turmaDTO.setDataFim(turma.getDataFim());
-//
-//                listTurmaDTO.add(turmaDTO);
-//            }
-//            instrutorDTO.setTurmaDTOList(listTurmaDTO);
-//        }
         return turmaDTO;
     }
 

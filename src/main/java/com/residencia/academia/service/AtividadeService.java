@@ -70,7 +70,6 @@ public class AtividadeService {
         atividade.setIdAtividade(atividadeDTO.getIdAtividade());
         atividade.setNome(atividadeDTO.getNome());
 
-
         return atividade;
     }
 }
