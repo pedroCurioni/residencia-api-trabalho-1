@@ -1,6 +1,8 @@
 package com.residencia.academia.controller;
 
 
+import com.residencia.academia.dto.InstrutorDTO;
+import com.residencia.academia.dto.TurmaDTO;
 import com.residencia.academia.entity.Instrutor;
 import com.residencia.academia.entity.Turma;
 import com.residencia.academia.exception.NoSuchElementFoundException;
@@ -23,6 +25,18 @@ public class TurmaController {
         return new ResponseEntity<>(turmaService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/dto/{id}")
+    public ResponseEntity<TurmaDTO> findDTOById(@PathVariable Integer id) {
+        TurmaDTO turmaDTO = turmaService.findDTOById(id);
+        if (null == turmaDTO) {
+            throw new NoSuchElementFoundException("Não foi encontrado a Turma com o id " + id);
+        } else {
+            return new ResponseEntity<>(turmaDTO, HttpStatus.OK);
+        }
+    }
+
+
+
     @GetMapping("/{id}")
     public ResponseEntity<Turma> findById(@PathVariable Integer id) {
         Turma turma = turmaService.findById(id);
@@ -31,6 +45,11 @@ public class TurmaController {
         } else {
             return new ResponseEntity<>(turma, HttpStatus.OK);
         }
+    }
+
+    @PostMapping("/dto")
+    public ResponseEntity<TurmaDTO> saveDTO(@RequestBody TurmaDTO turmaDTO) {
+        return new ResponseEntity<>(turmaService.saveDTO(turmaDTO), HttpStatus.CREATED);
     }
 
     @PostMapping
