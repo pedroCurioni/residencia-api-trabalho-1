@@ -76,6 +76,8 @@ public class TurmaService {
             instrutorDTO.setNomeInstrutor(instrutor.getNomeInstrutor());
             instrutorDTO.setDataNascimento(instrutor.getDataNascimento());
             instrutorDTO.setTitulacaoInstrutor(instrutor.getTitulacaoInstrutor());
+
+            turmaDTO.setInstrutorDTO(instrutorDTO);
         }
 
         if (turma.getAtividade() != null) {
@@ -84,6 +86,8 @@ public class TurmaService {
 
             atividadeDTO.setIdAtividade(atividade.getIdAtividade());
             atividadeDTO.setNome(atividade.getNome());
+
+            turmaDTO.setAtividadeDTO(atividadeDTO);
         }
         return turmaDTO;
     }
