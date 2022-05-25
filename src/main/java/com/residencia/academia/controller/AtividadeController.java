@@ -1,7 +1,6 @@
 package com.residencia.academia.controller;
 
 import com.residencia.academia.dto.AtividadeDTO;
-import com.residencia.academia.dto.InstrutorDTO;
 import com.residencia.academia.entity.Atividade;
 import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.AtividadeService;
@@ -20,14 +19,15 @@ public class AtividadeController {
 
     @GetMapping
     public ResponseEntity<List<Atividade>> findAll() {
-        return new ResponseEntity<>(atividadeService.findAll(), HttpStatus.OK);
+        List<Atividade> atividadeList = atividadeService.findAll();
+        return new ResponseEntity<>(atividadeList, HttpStatus.OK);
     }
 
     @GetMapping("/dto/{id}")
     public ResponseEntity<AtividadeDTO> findDTOById(@PathVariable Integer id) {
         AtividadeDTO atividadeDTO = atividadeService.findDTOById(id);
         if (null == atividadeDTO) {
-            throw new NoSuchElementFoundException("Não foi encontrado o Instrutor com o id " + id);
+            throw new NoSuchElementFoundException("Não foi encontrado a Atividade com o id " + id);
         } else {
             return new ResponseEntity<>(atividadeDTO, HttpStatus.OK);
         }
@@ -50,7 +50,7 @@ public class AtividadeController {
 
     @PostMapping
     public ResponseEntity<Atividade> save(@RequestBody Atividade atividade) {
-        return new ResponseEntity<>(atividadeService.update(atividade), HttpStatus.CREATED);
+        return new ResponseEntity<>(atividadeService.save(atividade), HttpStatus.CREATED);
     }
 
     @PutMapping
